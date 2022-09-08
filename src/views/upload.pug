@@ -1,0 +1,8 @@
+extends ./base.pug
+
+block content
+    form(method="POST")
+        input(name="title" placeholder="Title", required, minlength=3,maxLength=80, type="text")
+        input(name="description" placeholder="Description", minlength=10,maxLength=140,required, type="text")
+        input(name="hashtags" placeholder="Hashtags, separated by comma.", required, type="text",style ={width: '250px'})
+        input(type="submit", value="Upload Video")
