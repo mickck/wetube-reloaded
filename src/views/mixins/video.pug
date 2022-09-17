@@ -5,5 +5,10 @@ mixin video(video)
         div.video-mixin__data
             span.video-mixin__title=video.title
             div.video-mixin__meta
-                span #{video.owner.name} • 
-                span #{video.meta.views} 
+                span #{video.owner.name} •  
+                |
+                if video.meta.views=== 0
+                    span #{video.meta.views} View
+                else 
+                    span #{video.meta.views} Views
+                
