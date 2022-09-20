@@ -2,6 +2,7 @@ import express from "express";
 // const express = require('express');
 import morgan from "morgan";
 import session from "express-session";
+import flash from "express-flash";
 import MongoStore from "connect-mongo";
 import rootRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
@@ -15,7 +16,11 @@ const logger = morgan("dev");
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(logger);
-app.use(express.urlencoded({ extended: true })); //It makes your exppress applition understands html form transforms in js
+//It makes your exppress applition understands html form transforms in js
+app.use(express.urlencoded({ extended: true }));
+
+// beckend can understand text.
+app.use(express.json());
 
 // server has a session middleware, This middleware send a message to browser. so server can remember my broswer indiviusaly.
 app.use(
@@ -27,7 +32,7 @@ app.use(
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
   })
 );
-
+app.use(flash());
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("assets"));
