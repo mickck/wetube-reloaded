@@ -151,10 +151,10 @@ export const postEdit = async (req, res) => {
   //const {id}  =req.session.user
   // const { name, email, username, location } = req.body;
 
-  // console.log("req.flie: ", file);
+  console.log("flie: ", file);
   const updateUser = await User.findByIdAndUpdate(
     _id,
-    { avatarUrl: file ? file.path : avatarUrl, name, email, username, location },
+    { avatarUrl: file ? file.location : avatarUrl, name, email, username, location },
     {
       new: true,
       //new:true  request newest updataed obj

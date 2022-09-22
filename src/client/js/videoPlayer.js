@@ -21,14 +21,12 @@ video.volume = volumeValue;
 const formatTime = (seconds) => new Date(seconds * 1000).toISOString().substring(14, 19);
 
 const handlePlayClick = (e) => {
-  // if the video is playing, pause it
-  // paused is A boolean value. true is paused and false is not paused.
   if (video.paused) {
     video.play();
   } else {
     video.pause();
   }
-  playBtn.classList = video.paused ? "fas fa-play" : "fas fa-pause";
+  playBtnIcon.classList = video.paused ? "fas fa-play" : "fas fa-pause";
 };
 
 const handleMute = (e) => {
