@@ -81,8 +81,7 @@ export const postUpload = async (req, res) => {
   /* const video = new Video;
      await video.save();  ->> await Video.create  makes easy and once. */
   const isHeroku = process.env.NODE_ENV === "production";
-  video[0];
-  console.log("video[0]: ", Video.changePathFormula(video[0].path));
+
   try {
     const newVideo = await Video.create({
       title,

@@ -137,7 +137,6 @@ export const logout = (req, res) => {
 };
 
 export const getEdit = (req, res) => {
-  // console.log(req.session.user._id);
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
 export const postEdit = async (req, res) => {
