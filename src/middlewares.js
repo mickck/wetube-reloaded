@@ -1,6 +1,7 @@
 import multer from "multer";
 import multerS3 from "multer-s3";
 import { S3Client } from "@aws-sdk/client-s3";
+
 const s3 = new S3Client({
   credentials: {
     accessKeyId: process.env.AWS_ID,
@@ -12,13 +13,13 @@ const isHeroku = process.env.NODE_ENV === "production";
 
 const s3ImageUploader = multerS3({
   s3: s3,
-  bucket: "wetubeee/images",
+  bucket: "metubeee/images",
   acl: "public-read",
 });
 
 const s3VideoUploader = multerS3({
   s3: s3,
-  bucket: "wetubeee/videos",
+  bucket: "metubeee/videos",
   acl: "public-read",
 });
 
