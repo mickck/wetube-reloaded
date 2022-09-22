@@ -56,7 +56,7 @@ const handleDeleteComment = async (event) => {
   });
 
   const { usersComment } = await response.json();
-  console.log(usersComment);
+  // console.log(usersComment);
   if (response.status === 201) {
     if (usersComment.find((v) => v == commentId)) {
       comment.remove();

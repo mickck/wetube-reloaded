@@ -8,12 +8,20 @@ const s3 = new S3Client({
   },
   region: "ap-southeast-2",
 });
+const isHeroku = process.env.NODE_ENV === "production";
 
-const multerUploader = multerS3({
+const s3ImageUploader = multerS3({
   s3: s3,
-  bucket: "metubeee",
+  bucket: "wetubeee/images",
   acl: "public-read",
 });
+
+const s3VideoUploader = multerS3({
+  s3: s3,
+  bucket: "wetubeee/videos",
+  acl: "public-read",
+});
+
 export const localsMiddleware = (req, res, next) => {
   // this is how you going to share w/ data. global variable
 
@@ -46,13 +54,17 @@ export const publicOnlyMiddleware = (req, res, next) => {
 };
 
 export const avatarUpload = multer({
-  dest: "uploads/avatars",
-  limits: { fileSize: 3000000 },
-  storage: multerUploader,
+  dest: "uploads/avatars/",
+  limits: {
+    fileSize: 3000000,
+  },
+  storage: isHeroku ? s3ImageUploader : undefined,
 });
 
 export const videoUpload = multer({
-  dest: "uploads/videos",
-  limits: { fileSize: 10000000 },
-  storage: multerUploader,
+  dest: "uploads/videos/",
+  limits: {
+    fileSize: 10000000,
+  },
+  storage: isHeroku ? s3VideoUploader : undefined,
 });
