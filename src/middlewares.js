@@ -31,6 +31,8 @@ export const localsMiddleware = (req, res, next) => {
   res.locals.loggedInUser = req.session.user || {};
   // It's possible loggedInUser is undefined
 
+  res.locals.isHeroku = isHeroku;
+
   next();
 };
 
@@ -59,8 +61,7 @@ export const avatarUpload = multer({
   limits: {
     fileSize: 3000000,
   },
-  storage: s3ImageUploader,
-  // storage: isHeroku ? s3ImageUploader : undefined,
+  storage: isHeroku ? s3ImageUploader : undefined,
 });
 
 export const videoUpload = multer({
@@ -68,6 +69,5 @@ export const videoUpload = multer({
   limits: {
     fileSize: 10000000,
   },
-  storage: s3VideoUploader,
-  // storage: isHeroku ? s3VideoUploader : undefined,
+  storage: isHeroku ? s3VideoUploader : undefined,
 });

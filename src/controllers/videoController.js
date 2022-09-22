@@ -78,15 +78,17 @@ export const postUpload = async (req, res) => {
   } = req.session;
   const { video, thumb } = req.files;
   const { title, description, hashtags } = req.body;
-
   /* const video = new Video;
      await video.save();  ->> await Video.create  makes easy and once. */
+  const isHeroku = process.env.NODE_ENV === "production";
+  video[0];
+  console.log("video[0]: ", Video.changePathFormula(video[0].path));
   try {
     const newVideo = await Video.create({
       title,
       description,
-      fileUrl: Video.changePathFormula(video[0].location),
-      thumbUrl: Video.changePathFormula(thumb[0].location),
+      fileUrl: isHeroku ? Video.changePathFormula(video[0].location) : Video.changePathFormula(video[0].path),
+      thumbUrl: isHeroku ? Video.changePathFormula(thumb[0].location) : Video.changePathFormula(video[0].path),
       owner: _id,
       hashtags: Video.formatHashtags(hashtags),
     });
