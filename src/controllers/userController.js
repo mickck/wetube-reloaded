@@ -137,7 +137,7 @@ export const logout = (req, res) => {
 };
 
 export const getEdit = (req, res) => {
-  console.log(req.session.user._id);
+  // console.log(req.session.user._id);
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
 export const postEdit = async (req, res) => {
@@ -148,10 +148,7 @@ export const postEdit = async (req, res) => {
     body: { name, email, username, location },
     file,
   } = req;
-  //const {id}  =req.session.user
-  // const { name, email, username, location } = req.body;
 
-  console.log("flie: ", file);
   const updateUser = await User.findByIdAndUpdate(
     _id,
     { avatarUrl: file ? file.location : avatarUrl, name, email, username, location },

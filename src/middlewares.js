@@ -13,13 +13,13 @@ const isHeroku = process.env.NODE_ENV === "production";
 
 const s3ImageUploader = multerS3({
   s3: s3,
-  bucket: "metubeee/images",
+  bucket: "metubeee",
   acl: "public-read",
 });
 
 const s3VideoUploader = multerS3({
   s3: s3,
-  bucket: "metubeee/videos",
+  bucket: "metubeee",
   acl: "public-read",
 });
 
@@ -59,7 +59,8 @@ export const avatarUpload = multer({
   limits: {
     fileSize: 3000000,
   },
-  storage: isHeroku ? s3ImageUploader : undefined,
+  storage: s3ImageUploader,
+  // storage: isHeroku ? s3ImageUploader : undefined,
 });
 
 export const videoUpload = multer({
@@ -67,5 +68,6 @@ export const videoUpload = multer({
   limits: {
     fileSize: 10000000,
   },
-  storage: isHeroku ? s3VideoUploader : undefined,
+  storage: s3VideoUploader,
+  // storage: isHeroku ? s3VideoUploader : undefined,
 });
