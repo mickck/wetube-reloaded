@@ -1,6 +1,6 @@
 # Youtube clone 
 
-Youtube Clone project built by HTML, CSS and Javascript.
+Youtube clone project built by HTML, CSS and Javascript.
 
 ![wetube](https://user-images.githubusercontent.com/49193381/204435587-de6d5694-d441-4ef0-b2fd-3aa29283f753.png)
 
@@ -18,3 +18,18 @@ Bank End: NodeJS. MongoDB, Express
 - CRUD
 - Data management through MongoDB
 - Deployment on Heroku
+
+## Set Up
+
+To set up:
+
+### `npm i`
+
+Intalls all the packages needed.
+
+### `npm run`
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
