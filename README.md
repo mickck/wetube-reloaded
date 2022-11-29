@@ -1,6 +1,6 @@
 # Youtube clone 
 
-Youtube clone project built by HTML, CSS, Pug, MongoDB and Javascript.
+Youtube clone project built by HTML, CSS and Javascript.
 
 ![wetube](https://user-images.githubusercontent.com/49193381/204435587-de6d5694-d441-4ef0-b2fd-3aa29283f753.png)
 
